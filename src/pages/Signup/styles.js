@@ -23,23 +23,7 @@ export const FormWrapper = styled.section`
     margin: 0 20%;
 `;
 
-export const IconsWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 18px;
-`;
-
 export const Description = styled.p`
     text-align: center;
     margin-bottom: 28px;
-`;
-
-export const Form =styled.form``;
-
-export const ButtonContainer = styled.section`
-    margin-top: 28px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
 `;
