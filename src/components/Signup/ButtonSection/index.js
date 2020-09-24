@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 //Styles
 import { ButtonContainer } from './styles';
 //MUI STUff
@@ -6,8 +7,14 @@ import Button from '@material-ui/core/Button';
 //Firebase
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+//Redux
+import { useDispatch } from 'react-redux';
+//Actions
+import { signupUser } from '../../../redux/actions/userActions';
 
 export default function ButtonSection({ classes, userInfo }) {
+
+    const dispatch = useDispatch();
 
     // Send userinfo
     const handleSubmit = () => {
@@ -23,7 +30,7 @@ export default function ButtonSection({ classes, userInfo }) {
         } else {
             firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password)
                 .then(() => {
-                    console.log("Usuário aceito");
+                    dispatch(signupUser(newUser));
                 })
                 .catch(error => {
                     var errorCode = error.code;
@@ -44,9 +51,9 @@ export default function ButtonSection({ classes, userInfo }) {
     return (
         <ButtonContainer>
             {/* Button Signup */}
-            <Button variant="contained" className={classes.ButtonSignup} onClick={handleSubmit || ""}>Sign Up</Button>
+            <Button variant="contained" className={classes.ButtonSignup} onClick={handleSubmit}>Sign Up</Button>
             {/* Button Login */}
-            <Button variant="outlined" className={classes.ButtonLogin}>Login</Button>
+            <Button variant="outlined" className={classes.ButtonLogin} component={Link} to='/login'>Login</Button>
         </ButtonContainer>
     )
 }

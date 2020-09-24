@@ -13,6 +13,7 @@ export default function AuthProvider({ children }) {
             if (user) {
               user.getIdToken(true)
                 .then(idToken => {
+                  console.log(idToken)
                   localStorage.setItem('FBIdToken', idToken);
                   dispatch({ type: 'SET_AUTHENTICATED' });
                 })

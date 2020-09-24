@@ -6,7 +6,7 @@ export default function ConnectedRoute({ component: Component, authenticated, ..
         <Route 
             {...rest}
             render={props => 
-                authenticated === false ? <Redirect to='/cadastrar' /> : <Component {...props} />
+                authenticated === false ? <Redirect to='/login' /> : <Component {...props} />
             }
         />
     )
